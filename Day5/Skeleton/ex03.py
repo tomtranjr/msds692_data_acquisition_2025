@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-
 # 1. Create a FastAPI App Instance
 app = FastAPI()
 items = {}  # In-memory database
@@ -18,6 +17,12 @@ class ItemResponse(BaseModel):
     total_worth: float
 
 
-@app.post("/add_items/")
+@app.post("/add_items/", response_model=ItemResponse)
 def create_item(item: Item):
     # TODO: COMPLETE THIS
+    items[item.name] = item
+    return {
+        "name": item.name,
+        "total_worth": item.price * item.instock_qt,
+        "instock_qt": item.instock_qt,
+    }
