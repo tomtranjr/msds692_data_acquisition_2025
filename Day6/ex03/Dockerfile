@@ -10,7 +10,7 @@ COPY * .
 # create an environment using environment.yml
 RUN conda env create -f environment.yml -n ex03
 
-# expose port 8502
-EXPOSE 8502
+# expose port 8501
+EXPOSE 8501
 
 CMD ["conda", "run", "--no-capture-output", "-n", "ex03", "streamlit", "run", "main.py", "--server.address", "0.0.0.0"]
