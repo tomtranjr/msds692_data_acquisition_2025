@@ -1,5 +1,6 @@
-from playwright.sync_api import sync_playwright
 import time
+
+from playwright.sync_api import sync_playwright
 
 with sync_playwright() as p:
     # Launching a Browser
@@ -12,5 +13,10 @@ with sync_playwright() as p:
     page.wait_for_selector("main")  # Wait Until the <main> appears
 
     # Click an anchor with a text, "About Reddit"
+    page.locator("a", has_text="About Reddit").click(button="left")
 
     # Wheel to go 150 pxl, 1000 pxl
+    page.mouse.wheel(150, 1000)
+    time.sleep(5)
+    page.mouse.wheel(150, 1000)
+    time.sleep(2)
