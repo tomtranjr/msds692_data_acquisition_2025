@@ -7,3 +7,4 @@ async def scrape_page(url, p):
 
 async def main():
     async with async_playwright() as p:
+        results = await asyncio.gather(scrape_page("https:reddit.com"))
